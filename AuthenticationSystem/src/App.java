@@ -76,6 +76,7 @@ public class App {
         return Encrypty.decryptPassword(account.password());
     }
 
+
     private static Account getAccountByEmail(String email){
         return accounts.stream().filter(ac -> ac.email().equals(email)).findFirst().orElse(null);
     }
