@@ -4,6 +4,8 @@ import java.util.Scanner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import dev.jessika.fujimura.AuthenticationSystem.Entity.Account;
+
 
 @SpringBootApplication
 public class AuthenticationSystemApplication {
@@ -47,7 +49,7 @@ public class AuthenticationSystemApplication {
                 default:
                     break;
             }
-            thread.sleep(3000);
+            // thread.sleep(3000);
             System.out.println("\n \n");
 
     }
@@ -60,7 +62,7 @@ public class AuthenticationSystemApplication {
         }
         String passwordEncrypt = Encrypty.encryptPassword(password);
         Account account = new Account(1L, email, passwordEncrypt);
-        accounts.add(account);
+        // accounts.add(account);
         return "Account criada com sucesso!";
     }
 
@@ -86,6 +88,7 @@ public class AuthenticationSystemApplication {
 
 
     private static Account getAccountByEmail(String email){
-        return accounts.stream().filter(ac -> ac.email().equals(email)).findFirst().orElse(null);
+        return new Account(null, email, email);
+        // return accounts.stream().filter(ac -> ac.email().equals(email)).findFirst().orElse(null);
     }
 }
