@@ -1,10 +1,13 @@
-package dev.jessika.fujimura.AuthenticationSystem;
+package dev.jessika.fujimura.AuthenticationSystem.Config;
 import java.util.Base64;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Encrypty {
     private static KeyGenerator keyGen ;
     private static SecretKey secretKey ;

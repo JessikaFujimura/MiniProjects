@@ -4,6 +4,7 @@ import java.util.Scanner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import dev.jessika.fujimura.AuthenticationSystem.Config.Encrypty;
 import dev.jessika.fujimura.AuthenticationSystem.Entity.Account;
 
 
