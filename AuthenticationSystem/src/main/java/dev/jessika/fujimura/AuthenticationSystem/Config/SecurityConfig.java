@@ -14,11 +14,11 @@ public class SecurityConfig{
    @Bean
    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
         httpSecurity
-        .authorizeHttpRequests((request) -> request.requestMatchers("/*")
+        .authorizeHttpRequests((request) -> request.requestMatchers("/auth/create-account", "/h2-console/", "/auth/login")
         .permitAll()
-        );
-        httpSecurity.csrf().disable();
-        httpSecurity.cors().disable();
+        )
+        .csrf(csrf -> csrf.disable())
+        .cors(cors -> cors.disable());
         return httpSecurity.build();
    }
 }

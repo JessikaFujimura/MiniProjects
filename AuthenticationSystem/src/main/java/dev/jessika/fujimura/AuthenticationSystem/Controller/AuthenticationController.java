@@ -8,6 +8,7 @@ import dev.jessika.fujimura.AuthenticationSystem.Service.AuthenticationService;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
@@ -22,16 +23,17 @@ public class AuthenticationController {
         this.authenticationService = authenticationService;
     }
 
-    @PostMapping   
+    @PostMapping("/create-account") 
     public String createAccount(@RequestBody Account account){
         return this.authenticationService.saveNewAccount(account);
     }
 
 
-    @GetMapping()   
-    public String login(){
-        return "ok";
+    @PostMapping("/login")
+    public String login(@RequestBody Account account) {
+        return this.authenticationService.loginUser(account);
     }
+
 
     // private static String createAccount(String email, String password){
     //     if(email == null || password == null){

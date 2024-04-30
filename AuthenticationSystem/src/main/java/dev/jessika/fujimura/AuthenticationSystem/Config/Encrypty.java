@@ -26,7 +26,7 @@ public class Encrypty {
     }
 
 
-    public static String encryptPassword(String password) {
+    public String encryptPassword(String password) {
             byte[] encryptedPassword = new byte[]{};
             try {
                 cipher.init(Cipher.ENCRYPT_MODE, secretKey);
@@ -38,7 +38,7 @@ public class Encrypty {
 
     }
 
-    public static String decryptPassword(String password){
+    public String decryptPassword(String password){
         try {
             cipher.init(Cipher.DECRYPT_MODE, secretKey);
             byte[] decryptedPassword = cipher.doFinal(Base64.getDecoder().decode(password));
