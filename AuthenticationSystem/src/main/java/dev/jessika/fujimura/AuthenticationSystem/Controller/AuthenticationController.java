@@ -8,8 +8,14 @@ import dev.jessika.fujimura.AuthenticationSystem.Service.AuthenticationService;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 
@@ -24,14 +30,27 @@ public class AuthenticationController {
     }
 
     @PostMapping("/create-account") 
-    public String createAccount(@RequestBody Account account){
-        return this.authenticationService.saveNewAccount(account);
+    public ResponseEntity<String> createAccount(@RequestBody Account account){
+        String newAccount = this.authenticationService.saveNewAccount(account);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newAccount);
     }
 
 
     @PostMapping("/login")
     public String login(@RequestBody Account account) {
-        return this.authenticationService.loginUser(account);
+        String responseLoginProcess = this.authenticationService.loginUser(account);
+        return responseLoginProcess;
+    }
+
+    @GetMapping("/recover/{email}")    
+    public String recoverPassword(@PathVariable("email") String email){
+        return this.authenticationService.recoverPassword(email);
+    }
+
+
+    @GetMapping
+    public String teste(){
+        return "OIIII";
     }
 
 

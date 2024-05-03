@@ -1,5 +1,6 @@
 package dev.jessika.fujimura.AuthenticationSystem.Service;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,16 +25,23 @@ public class AuthenticationService {
         String passwordEncrypt = encrypty.encryptPassword(account.password());
         Account accountToBePersisted = new Account(account.id(), account.email(),passwordEncrypt);
         Account accountSaved = accountRepository.save(accountToBePersisted);
-    
         return String.format("%d - Account %s save successfully!", accountSaved.id(), accountSaved.email());
     }
 
     public String loginUser(Account account) {
-        Account userRegistry = accountRepository.findById(account.id()).orElseThrow(() -> new AccountException("Account not found"));
-        if(account.email().equals(userRegistry.email()) && account.password().equals(encrypty.decryptPassword(userRegistry.password()))){
+        Account userRegistry = accountRepository.findById(account.id())
+            .orElseThrow(() -> new AccountException("Account not found"));
+        String passwordDecrypty = encrypty.decryptPassword(userRegistry.password());
+        if(account.email().equals(userRegistry.email()) && account.password().equals(passwordDecrypty)){
             return "Login with success!";
         }
         return "Login failed!";
+    }
+
+    public String recoverPassword(String email) {
+        Account userRegistry = accountRepository.findByEmail(email);
+        String passwordDecrypt = encrypty.decryptPassword(userRegistry.password());
+        return passwordDecrypt;
     }
 
 }
