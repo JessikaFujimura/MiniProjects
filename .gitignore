@@ -1,0 +1,9 @@
+AuthenticationSystem/bin/*
+AuthenticationSystem/data/*
+AuthenticationSystem/target/*
+AuthenticationSystem/.vscode/*
+.idea
+.vscode
+.DS_Store
+
+

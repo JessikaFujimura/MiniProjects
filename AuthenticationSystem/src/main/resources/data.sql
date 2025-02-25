@@ -1,0 +1,7 @@
+DELETE FROM ACCOUNT;
+
+INSERT INTO ACCOUNT(
+    ID, EMAIL, "PASSWORD"
+) VALUES (
+    1, 'alice@test.com', '12345'
+);

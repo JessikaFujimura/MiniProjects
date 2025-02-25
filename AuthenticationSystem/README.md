@@ -4,7 +4,7 @@
 
 [EN] System that allowed the users to sign in, log on, recover  password and management your account.
 
-### branch First version
+### branch *console-version*
 [PT-BR] A primeira versão é simples. Ela foi desenvolvida sem framework. Você pode rodar facilmente em seu console.
 
 Há as seguintes opções:
@@ -30,3 +30,17 @@ You have this options:
 `FINISH`
 
 The account is saving locally. Then, when you choose `FINISH`, all account will be deleted.
+
+## branch *spring-version*
+
+[PT-BR] Esta versão consiste em uma API.
+
+[EN]
+
+## Annotations Command
+
+`mvn clean install`
+
+`mvn dependency:resolve`
+
+`mvn spring-boot:run`
