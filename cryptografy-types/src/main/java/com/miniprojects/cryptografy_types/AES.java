@@ -3,14 +3,12 @@ package com.miniprojects.cryptografy_types;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
-import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
 @Component
-public class AES implements Cryptografy{
+public class AES implements Cryptography {
     
     private static SecretKey secretKey;
     
